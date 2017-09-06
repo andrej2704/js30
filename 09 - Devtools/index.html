@@ -16,17 +16,55 @@
       p.style.fontSize = '50px';
     }
     // Regular
+    console.log("regular");
     // Interpolated
+    console.log("Like a regular", "but more freedom");
     // Styled
+    console.log('%c Some styled text', 'font-size:50px')
     // warning!
+    console.warn('This is worning level');
     // Error :|
+    console.error('This is error level message');
     // Info
+    console.info('Info level message');
     // Testing
+    const p = document.querySelector('p');
+    console.assert(p.classList.contains('random'), 'Paragraph doesnt contain specified string');
     // clearing
+    console.clear();
     // Viewing DOM Elements
+    console.log(p);
+    console.dir(p);
     // Grouping together
+    dogs.forEach(dog => {
+        console.group(`${dog.name}`);
+        console.log(`This is ${dog.name}`);
+        console.log(`${dog.name} is ${dog.age} years old`);
+        console.log(`${dog.name} is ${dog.age*7} dog years old`);
+        console.groupEnd(`${dog.name}`); 
+    })
+    dogs.forEach(dog => {
+        console.groupCollapsed(`${dog.name}`);
+        console.log(`This is ${dog.name}`);
+        console.log(`${dog.name} is ${dog.age} years old`);
+        console.log(`${dog.name} is ${dog.age*7} dog years old`);
+        console.groupEnd(`${dog.name}`); 
+    })
     // counting
+    console.groupCollapsed('test');
+    console.count('test');
+    console.count('test');
+    console.count('test');
+    console.count('test');
+    console.groupEnd('test');
     // timing
+    console.time("Fetching from github");
+    fetch('https://api.github.com/users/andrej2704/repos')
+    .then(data => data.json())
+    .then(data => {
+        console.timeEnd("fetching data");
+        console.log(data.sort((a, b) => a.created_at > b.created_at ? 1: -1).map(repo => `${repo.name}: ${repo.created_at}` ));
+    })
   </script>
 </body>
 </html>
